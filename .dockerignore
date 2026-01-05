@@ -1,0 +1,4 @@
+node_modules
+*.log
+public/all_laws_full.json
+public/all_laws_full_clean.json
