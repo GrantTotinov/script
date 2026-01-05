@@ -18,32 +18,32 @@ const outputPath = path.join(__dirname, 'public', 'all_laws_full.json')
   const CONCURRENCY = 10
   let idx = 0
   async function scrapeLaw(law, i) {
-    let browser = null
-    let page = null
+    let browser = null;
+    let page = null;
     try {
-      browser = await chromium.launch({ headless: true })
-      page = await browser.newPage()
-      await page.goto(law.link, { timeout: 60000 })
+      browser = await chromium.launch({ headless: true });
+      page = await browser.newPage();
+      await page.goto(law.link, { timeout: 60000 });
       // Extract law title (avoid strict mode error)
-      let title = ''
+      let title = '';
       try {
-        title = await page.locator('h1.p-container-title').first().innerText()
+        title = await page.locator('h1.p-container-title').first().innerText();
       } catch {
-        const h1s = await page.locator('h1').allInnerTexts()
-        title = h1s.length > 1 ? h1s[1] : h1s[0]
+        const h1s = await page.locator('h1').allInnerTexts();
+        title = h1s.length > 1 ? h1s[1] : h1s[0];
       }
-      let meta = []
+      let meta = [];
       try {
-        meta = await page.locator('.law-details').allInnerTexts()
+        meta = await page.locator('.law-details').allInnerTexts();
       } catch {
-        meta = []
+        meta = [];
       }
-      let fullText = ''
+      let fullText = '';
       try {
         // 1. Опитай .act-body (най-чист контейнер за закона)
-        if ((await page.locator('.act-body').count()) > 0) {
+        if (await page.locator('.act-body').count() > 0) {
           // Вземи innerHTML, премахни HTML тагове, остави само текста
-          let html = await page.locator('.act-body').first().innerHTML()
+          let html = await page.locator('.act-body').first().innerHTML();
           // Премахни всички тагове и декодирай HTML entities
           fullText = html
             .replace(/<[^>]+>/g, '\n')
@@ -53,65 +53,57 @@ const outputPath = path.join(__dirname, 'public', 'all_laws_full.json')
             .replace(/&lt;/g, '<')
             .replace(/&gt;/g, '>')
             .replace(/\n{2,}/g, '\n')
-            .replace(/^[\s\n]+|[\s\n]+$/g, '')
-        } else if (
-          (await page
-            .locator('.content .law, .content .law-text, .content .law-content')
-            .count()) > 0
-        ) {
-          fullText = await page
-            .locator('.content .law, .content .law-text, .content .law-content')
-            .first()
-            .innerText()
+            .replace(/^[\s\n]+|[\s\n]+$/g, '');
+        } else if (await page.locator('.content .law, .content .law-text, .content .law-content').count() > 0) {
+          fullText = await page.locator('.content .law, .content .law-text, .content .law-content').first().innerText();
         } else {
           // fallback: най-дългият div в body
-          const allDivs = await page.locator('body div').allInnerTexts()
-          fullText = allDivs.sort((a, b) => b.length - a.length)[0] || ''
+          const allDivs = await page.locator('body div').allInnerTexts();
+          fullText = allDivs.sort((a, b) => b.length - a.length)[0] || '';
         }
       } catch {
-        fullText = ''
+        fullText = '';
       }
       // Остави само текста от първото срещане на "Закон за ..." или "УКАЗ № ..." до подписа ("Председател ..." или последния bold/align right)
       if (fullText) {
         // Търси начало на закона
-        let startMatch = fullText.match(/Закон за [^\n]+|УКАЗ № ?\d+/)
-        let startIdx =
-          startMatch && startMatch.index !== undefined ? startMatch.index : 0
+        let startMatch = fullText.match(/Закон за [^\n]+|УКАЗ № ?\d+/);
+        let startIdx = startMatch && startMatch.index !== undefined ? startMatch.index : 0;
         // Търси край: подпис или последния bold/align right
-        let endIdx = fullText.length
-        let endMatch = fullText.match(/Председател[\s\S]+?\n.*\n?$/)
+        let endIdx = fullText.length;
+        let endMatch = fullText.match(/Председател[\s\S]+?\n.*\n?$/);
         if (endMatch && endMatch.index !== undefined) {
-          endIdx = endMatch.index + endMatch[0].length
+          endIdx = endMatch.index + endMatch[0].length;
         }
-        fullText = fullText.slice(startIdx, endIdx).trim()
+        fullText = fullText.slice(startIdx, endIdx).trim();
       }
       const lawObj = {
         ...law,
         title: title ? title.trim() : law.title,
         meta: meta,
         text: fullText ? fullText.trim() : '',
-      }
-      results[i] = lawObj
-      fs.writeFileSync(outputPath, JSON.stringify(results, null, 2), 'utf8')
+      };
+      results[i] = lawObj;
+      fs.writeFileSync(outputPath, JSON.stringify(results, null, 2), 'utf8');
       console.log(
         `[${i + 1}/${laws.length}] Extracted: ${law.title} | Total scraped: ${
           results.filter((x) => x).length
         }`
-      )
+      );
     } catch (err) {
-      results[i] = { ...law, text: '', error: err.message }
-      fs.writeFileSync(outputPath, JSON.stringify(results, null, 2), 'utf8')
+      results[i] = { ...law, text: '', error: err.message };
+      fs.writeFileSync(outputPath, JSON.stringify(results, null, 2), 'utf8');
       console.log(
         `[${i + 1}/${laws.length}] Failed: ${law.title} | Error: ${err.message}`
-      )
+      );
     } finally {
       if (page)
         try {
-          await page.close()
+          await page.close();
         } catch {}
       if (browser)
         try {
-          await browser.close()
+          await browser.close();
         } catch {}
     }
   } // <-- добавена липсваща затваряща скоба
