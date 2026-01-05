@@ -5,6 +5,7 @@ const fs = require('fs')
 const path = require('path')
 const { chromium } = require('playwright')
 
+
 const inputPath = path.join(__dirname, 'public', 'all_laws.json')
 // Get chunk index and total chunks from command line
 const chunkIndex = parseInt(process.argv[2] || '0', 10)
@@ -18,13 +19,10 @@ const chunkEnd = Math.min((chunkIndex + 1) * chunkSize, allLaws.length)
 const laws = allLaws.slice(chunkStart, chunkEnd)
 
 // Output file for this chunk
-const outputPath = path.join(
-  __dirname,
-  'public',
-  `all_laws_full_chunk_${chunkIndex}.json`
-)
+const outputPath = path.join(__dirname, 'public', `all_laws_full_chunk_${chunkIndex}.json`)
 
 ;(async () => {
+
   const results = []
 
   // Паралелен scrape с 15 браузъра
@@ -153,9 +151,5 @@ const outputPath = path.join(
   const ok = results.filter((l) => l && l.text && l.text.length > 50).length
   const fail = results.length - ok
   console.log(`Done. Saved to ${outputPath}`)
-  console.log(
-    `Chunk: ${chunkIndex + 1}/${totalChunks} | Laws: ${
-      laws.length
-    } | Success: ${ok} | Failed: ${fail}`
-  )
+  console.log(`Chunk: ${chunkIndex + 1}/${totalChunks} | Laws: ${laws.length} | Success: ${ok} | Failed: ${fail}`)
 })()
