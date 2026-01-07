@@ -1,0 +1,40 @@
+name: Scrape Missing Laws in Parallel
+
+on:
+  workflow_dispatch:
+
+jobs:
+  scrape-missing:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        batch: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: |
+          npm install
+          npx playwright install --with-deps
+
+      - name: Run scraper for missing batch ${{ matrix.batch }}
+        run: |
+          node scrape_missing_laws_batch.cjs ${{ matrix.batch }}
+
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: laws-missing-batch-${{ matrix.batch }}
+          path: public/all_laws_scraped_missing_batch_${{ matrix.batch }}.json
+
+      - name: Upload errors
+        uses: actions/upload-artifact@v4
+        with:
+          name: scrape-errors-batch-${{ matrix.batch }}
+          path: scrape_errors_log_batch_${{ matrix.batch }}.json
