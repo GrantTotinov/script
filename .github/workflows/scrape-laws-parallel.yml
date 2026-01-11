@@ -119,7 +119,7 @@ jobs:
       max-parallel: 10 # Limit concurrent jobs to avoid overwhelming the server
       fail-fast: false # Continue other jobs even if some fail
       matrix:
-        batch: ${{ fromJson(needs.create-batches.outputs.matrix.batch) }}
+        batch: ${{ fromJson(needs.create-batches.outputs.matrix).batch }}
 
     steps:
       - name: Checkout repository
