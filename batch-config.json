@@ -1,1800 +1,189 @@
 {
   "totalLaws": 1989,
-  "totalBatches": 199,
+  "totalBatches": 20,
   "strategy": "size",
-  "batchSize": 10,
+  "batchSize": 100,
   "sortOrder": "desc",
-  "createdAt": "2026-01-11T01:31:07.423Z",
+  "createdAt": "2026-01-11T02:29:57.258Z",
   "batches": [
     {
       "batchIndex": 0,
       "filename": "batch_000.json",
       "filePath": "D:\\VS Repos\\script\\batches\\batch_000.json",
-      "size": 10,
+      "size": 100,
       "year": null,
       "startIndex": 0,
-      "endIndex": 10
+      "endIndex": 100
     },
     {
       "batchIndex": 1,
       "filename": "batch_001.json",
       "filePath": "D:\\VS Repos\\script\\batches\\batch_001.json",
-      "size": 10,
+      "size": 100,
       "year": null,
-      "startIndex": 10,
-      "endIndex": 20
+      "startIndex": 100,
+      "endIndex": 200
     },
     {
       "batchIndex": 2,
       "filename": "batch_002.json",
       "filePath": "D:\\VS Repos\\script\\batches\\batch_002.json",
-      "size": 10,
+      "size": 100,
       "year": null,
-      "startIndex": 20,
-      "endIndex": 30
+      "startIndex": 200,
+      "endIndex": 300
     },
     {
       "batchIndex": 3,
       "filename": "batch_003.json",
       "filePath": "D:\\VS Repos\\script\\batches\\batch_003.json",
-      "size": 10,
+      "size": 100,
       "year": null,
-      "startIndex": 30,
-      "endIndex": 40
+      "startIndex": 300,
+      "endIndex": 400
     },
     {
       "batchIndex": 4,
       "filename": "batch_004.json",
       "filePath": "D:\\VS Repos\\script\\batches\\batch_004.json",
-      "size": 10,
+      "size": 100,
       "year": null,
-      "startIndex": 40,
-      "endIndex": 50
+      "startIndex": 400,
+      "endIndex": 500
     },
     {
       "batchIndex": 5,
       "filename": "batch_005.json",
       "filePath": "D:\\VS Repos\\script\\batches\\batch_005.json",
-      "size": 10,
+      "size": 100,
       "year": null,
-      "startIndex": 50,
-      "endIndex": 60
+      "startIndex": 500,
+      "endIndex": 600
     },
     {
       "batchIndex": 6,
       "filename": "batch_006.json",
       "filePath": "D:\\VS Repos\\script\\batches\\batch_006.json",
-      "size": 10,
+      "size": 100,
       "year": null,
-      "startIndex": 60,
-      "endIndex": 70
+      "startIndex": 600,
+      "endIndex": 700
     },
     {
       "batchIndex": 7,
       "filename": "batch_007.json",
       "filePath": "D:\\VS Repos\\script\\batches\\batch_007.json",
-      "size": 10,
+      "size": 100,
       "year": null,
-      "startIndex": 70,
-      "endIndex": 80
+      "startIndex": 700,
+      "endIndex": 800
     },
     {
       "batchIndex": 8,
       "filename": "batch_008.json",
       "filePath": "D:\\VS Repos\\script\\batches\\batch_008.json",
-      "size": 10,
+      "size": 100,
       "year": null,
-      "startIndex": 80,
-      "endIndex": 90
+      "startIndex": 800,
+      "endIndex": 900
     },
     {
       "batchIndex": 9,
       "filename": "batch_009.json",
       "filePath": "D:\\VS Repos\\script\\batches\\batch_009.json",
-      "size": 10,
+      "size": 100,
       "year": null,
-      "startIndex": 90,
-      "endIndex": 100
+      "startIndex": 900,
+      "endIndex": 1000
     },
     {
       "batchIndex": 10,
       "filename": "batch_010.json",
       "filePath": "D:\\VS Repos\\script\\batches\\batch_010.json",
-      "size": 10,
+      "size": 100,
       "year": null,
-      "startIndex": 100,
-      "endIndex": 110
+      "startIndex": 1000,
+      "endIndex": 1100
     },
     {
       "batchIndex": 11,
       "filename": "batch_011.json",
       "filePath": "D:\\VS Repos\\script\\batches\\batch_011.json",
-      "size": 10,
+      "size": 100,
       "year": null,
-      "startIndex": 110,
-      "endIndex": 120
+      "startIndex": 1100,
+      "endIndex": 1200
     },
     {
       "batchIndex": 12,
       "filename": "batch_012.json",
       "filePath": "D:\\VS Repos\\script\\batches\\batch_012.json",
-      "size": 10,
+      "size": 100,
       "year": null,
-      "startIndex": 120,
-      "endIndex": 130
+      "startIndex": 1200,
+      "endIndex": 1300
     },
     {
       "batchIndex": 13,
       "filename": "batch_013.json",
       "filePath": "D:\\VS Repos\\script\\batches\\batch_013.json",
-      "size": 10,
+      "size": 100,
       "year": null,
-      "startIndex": 130,
-      "endIndex": 140
+      "startIndex": 1300,
+      "endIndex": 1400
     },
     {
       "batchIndex": 14,
       "filename": "batch_014.json",
       "filePath": "D:\\VS Repos\\script\\batches\\batch_014.json",
-      "size": 10,
+      "size": 100,
       "year": null,
-      "startIndex": 140,
-      "endIndex": 150
+      "startIndex": 1400,
+      "endIndex": 1500
     },
     {
       "batchIndex": 15,
       "filename": "batch_015.json",
       "filePath": "D:\\VS Repos\\script\\batches\\batch_015.json",
-      "size": 10,
+      "size": 100,
       "year": null,
-      "startIndex": 150,
-      "endIndex": 160
+      "startIndex": 1500,
+      "endIndex": 1600
     },
     {
       "batchIndex": 16,
       "filename": "batch_016.json",
       "filePath": "D:\\VS Repos\\script\\batches\\batch_016.json",
-      "size": 10,
+      "size": 100,
       "year": null,
-      "startIndex": 160,
-      "endIndex": 170
+      "startIndex": 1600,
+      "endIndex": 1700
     },
     {
       "batchIndex": 17,
       "filename": "batch_017.json",
       "filePath": "D:\\VS Repos\\script\\batches\\batch_017.json",
-      "size": 10,
+      "size": 100,
       "year": null,
-      "startIndex": 170,
-      "endIndex": 180
+      "startIndex": 1700,
+      "endIndex": 1800
     },
     {
       "batchIndex": 18,
       "filename": "batch_018.json",
       "filePath": "D:\\VS Repos\\script\\batches\\batch_018.json",
-      "size": 10,
+      "size": 100,
       "year": null,
-      "startIndex": 180,
-      "endIndex": 190
+      "startIndex": 1800,
+      "endIndex": 1900
     },
     {
       "batchIndex": 19,
       "filename": "batch_019.json",
       "filePath": "D:\\VS Repos\\script\\batches\\batch_019.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 190,
-      "endIndex": 200
-    },
-    {
-      "batchIndex": 20,
-      "filename": "batch_020.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_020.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 200,
-      "endIndex": 210
-    },
-    {
-      "batchIndex": 21,
-      "filename": "batch_021.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_021.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 210,
-      "endIndex": 220
-    },
-    {
-      "batchIndex": 22,
-      "filename": "batch_022.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_022.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 220,
-      "endIndex": 230
-    },
-    {
-      "batchIndex": 23,
-      "filename": "batch_023.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_023.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 230,
-      "endIndex": 240
-    },
-    {
-      "batchIndex": 24,
-      "filename": "batch_024.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_024.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 240,
-      "endIndex": 250
-    },
-    {
-      "batchIndex": 25,
-      "filename": "batch_025.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_025.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 250,
-      "endIndex": 260
-    },
-    {
-      "batchIndex": 26,
-      "filename": "batch_026.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_026.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 260,
-      "endIndex": 270
-    },
-    {
-      "batchIndex": 27,
-      "filename": "batch_027.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_027.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 270,
-      "endIndex": 280
-    },
-    {
-      "batchIndex": 28,
-      "filename": "batch_028.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_028.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 280,
-      "endIndex": 290
-    },
-    {
-      "batchIndex": 29,
-      "filename": "batch_029.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_029.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 290,
-      "endIndex": 300
-    },
-    {
-      "batchIndex": 30,
-      "filename": "batch_030.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_030.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 300,
-      "endIndex": 310
-    },
-    {
-      "batchIndex": 31,
-      "filename": "batch_031.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_031.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 310,
-      "endIndex": 320
-    },
-    {
-      "batchIndex": 32,
-      "filename": "batch_032.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_032.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 320,
-      "endIndex": 330
-    },
-    {
-      "batchIndex": 33,
-      "filename": "batch_033.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_033.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 330,
-      "endIndex": 340
-    },
-    {
-      "batchIndex": 34,
-      "filename": "batch_034.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_034.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 340,
-      "endIndex": 350
-    },
-    {
-      "batchIndex": 35,
-      "filename": "batch_035.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_035.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 350,
-      "endIndex": 360
-    },
-    {
-      "batchIndex": 36,
-      "filename": "batch_036.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_036.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 360,
-      "endIndex": 370
-    },
-    {
-      "batchIndex": 37,
-      "filename": "batch_037.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_037.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 370,
-      "endIndex": 380
-    },
-    {
-      "batchIndex": 38,
-      "filename": "batch_038.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_038.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 380,
-      "endIndex": 390
-    },
-    {
-      "batchIndex": 39,
-      "filename": "batch_039.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_039.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 390,
-      "endIndex": 400
-    },
-    {
-      "batchIndex": 40,
-      "filename": "batch_040.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_040.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 400,
-      "endIndex": 410
-    },
-    {
-      "batchIndex": 41,
-      "filename": "batch_041.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_041.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 410,
-      "endIndex": 420
-    },
-    {
-      "batchIndex": 42,
-      "filename": "batch_042.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_042.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 420,
-      "endIndex": 430
-    },
-    {
-      "batchIndex": 43,
-      "filename": "batch_043.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_043.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 430,
-      "endIndex": 440
-    },
-    {
-      "batchIndex": 44,
-      "filename": "batch_044.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_044.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 440,
-      "endIndex": 450
-    },
-    {
-      "batchIndex": 45,
-      "filename": "batch_045.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_045.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 450,
-      "endIndex": 460
-    },
-    {
-      "batchIndex": 46,
-      "filename": "batch_046.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_046.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 460,
-      "endIndex": 470
-    },
-    {
-      "batchIndex": 47,
-      "filename": "batch_047.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_047.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 470,
-      "endIndex": 480
-    },
-    {
-      "batchIndex": 48,
-      "filename": "batch_048.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_048.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 480,
-      "endIndex": 490
-    },
-    {
-      "batchIndex": 49,
-      "filename": "batch_049.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_049.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 490,
-      "endIndex": 500
-    },
-    {
-      "batchIndex": 50,
-      "filename": "batch_050.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_050.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 500,
-      "endIndex": 510
-    },
-    {
-      "batchIndex": 51,
-      "filename": "batch_051.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_051.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 510,
-      "endIndex": 520
-    },
-    {
-      "batchIndex": 52,
-      "filename": "batch_052.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_052.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 520,
-      "endIndex": 530
-    },
-    {
-      "batchIndex": 53,
-      "filename": "batch_053.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_053.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 530,
-      "endIndex": 540
-    },
-    {
-      "batchIndex": 54,
-      "filename": "batch_054.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_054.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 540,
-      "endIndex": 550
-    },
-    {
-      "batchIndex": 55,
-      "filename": "batch_055.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_055.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 550,
-      "endIndex": 560
-    },
-    {
-      "batchIndex": 56,
-      "filename": "batch_056.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_056.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 560,
-      "endIndex": 570
-    },
-    {
-      "batchIndex": 57,
-      "filename": "batch_057.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_057.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 570,
-      "endIndex": 580
-    },
-    {
-      "batchIndex": 58,
-      "filename": "batch_058.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_058.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 580,
-      "endIndex": 590
-    },
-    {
-      "batchIndex": 59,
-      "filename": "batch_059.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_059.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 590,
-      "endIndex": 600
-    },
-    {
-      "batchIndex": 60,
-      "filename": "batch_060.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_060.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 600,
-      "endIndex": 610
-    },
-    {
-      "batchIndex": 61,
-      "filename": "batch_061.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_061.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 610,
-      "endIndex": 620
-    },
-    {
-      "batchIndex": 62,
-      "filename": "batch_062.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_062.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 620,
-      "endIndex": 630
-    },
-    {
-      "batchIndex": 63,
-      "filename": "batch_063.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_063.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 630,
-      "endIndex": 640
-    },
-    {
-      "batchIndex": 64,
-      "filename": "batch_064.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_064.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 640,
-      "endIndex": 650
-    },
-    {
-      "batchIndex": 65,
-      "filename": "batch_065.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_065.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 650,
-      "endIndex": 660
-    },
-    {
-      "batchIndex": 66,
-      "filename": "batch_066.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_066.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 660,
-      "endIndex": 670
-    },
-    {
-      "batchIndex": 67,
-      "filename": "batch_067.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_067.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 670,
-      "endIndex": 680
-    },
-    {
-      "batchIndex": 68,
-      "filename": "batch_068.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_068.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 680,
-      "endIndex": 690
-    },
-    {
-      "batchIndex": 69,
-      "filename": "batch_069.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_069.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 690,
-      "endIndex": 700
-    },
-    {
-      "batchIndex": 70,
-      "filename": "batch_070.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_070.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 700,
-      "endIndex": 710
-    },
-    {
-      "batchIndex": 71,
-      "filename": "batch_071.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_071.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 710,
-      "endIndex": 720
-    },
-    {
-      "batchIndex": 72,
-      "filename": "batch_072.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_072.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 720,
-      "endIndex": 730
-    },
-    {
-      "batchIndex": 73,
-      "filename": "batch_073.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_073.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 730,
-      "endIndex": 740
-    },
-    {
-      "batchIndex": 74,
-      "filename": "batch_074.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_074.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 740,
-      "endIndex": 750
-    },
-    {
-      "batchIndex": 75,
-      "filename": "batch_075.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_075.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 750,
-      "endIndex": 760
-    },
-    {
-      "batchIndex": 76,
-      "filename": "batch_076.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_076.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 760,
-      "endIndex": 770
-    },
-    {
-      "batchIndex": 77,
-      "filename": "batch_077.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_077.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 770,
-      "endIndex": 780
-    },
-    {
-      "batchIndex": 78,
-      "filename": "batch_078.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_078.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 780,
-      "endIndex": 790
-    },
-    {
-      "batchIndex": 79,
-      "filename": "batch_079.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_079.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 790,
-      "endIndex": 800
-    },
-    {
-      "batchIndex": 80,
-      "filename": "batch_080.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_080.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 800,
-      "endIndex": 810
-    },
-    {
-      "batchIndex": 81,
-      "filename": "batch_081.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_081.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 810,
-      "endIndex": 820
-    },
-    {
-      "batchIndex": 82,
-      "filename": "batch_082.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_082.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 820,
-      "endIndex": 830
-    },
-    {
-      "batchIndex": 83,
-      "filename": "batch_083.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_083.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 830,
-      "endIndex": 840
-    },
-    {
-      "batchIndex": 84,
-      "filename": "batch_084.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_084.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 840,
-      "endIndex": 850
-    },
-    {
-      "batchIndex": 85,
-      "filename": "batch_085.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_085.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 850,
-      "endIndex": 860
-    },
-    {
-      "batchIndex": 86,
-      "filename": "batch_086.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_086.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 860,
-      "endIndex": 870
-    },
-    {
-      "batchIndex": 87,
-      "filename": "batch_087.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_087.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 870,
-      "endIndex": 880
-    },
-    {
-      "batchIndex": 88,
-      "filename": "batch_088.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_088.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 880,
-      "endIndex": 890
-    },
-    {
-      "batchIndex": 89,
-      "filename": "batch_089.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_089.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 890,
-      "endIndex": 900
-    },
-    {
-      "batchIndex": 90,
-      "filename": "batch_090.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_090.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 900,
-      "endIndex": 910
-    },
-    {
-      "batchIndex": 91,
-      "filename": "batch_091.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_091.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 910,
-      "endIndex": 920
-    },
-    {
-      "batchIndex": 92,
-      "filename": "batch_092.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_092.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 920,
-      "endIndex": 930
-    },
-    {
-      "batchIndex": 93,
-      "filename": "batch_093.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_093.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 930,
-      "endIndex": 940
-    },
-    {
-      "batchIndex": 94,
-      "filename": "batch_094.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_094.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 940,
-      "endIndex": 950
-    },
-    {
-      "batchIndex": 95,
-      "filename": "batch_095.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_095.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 950,
-      "endIndex": 960
-    },
-    {
-      "batchIndex": 96,
-      "filename": "batch_096.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_096.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 960,
-      "endIndex": 970
-    },
-    {
-      "batchIndex": 97,
-      "filename": "batch_097.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_097.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 970,
-      "endIndex": 980
-    },
-    {
-      "batchIndex": 98,
-      "filename": "batch_098.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_098.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 980,
-      "endIndex": 990
-    },
-    {
-      "batchIndex": 99,
-      "filename": "batch_099.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_099.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 990,
-      "endIndex": 1000
-    },
-    {
-      "batchIndex": 100,
-      "filename": "batch_100.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_100.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1000,
-      "endIndex": 1010
-    },
-    {
-      "batchIndex": 101,
-      "filename": "batch_101.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_101.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1010,
-      "endIndex": 1020
-    },
-    {
-      "batchIndex": 102,
-      "filename": "batch_102.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_102.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1020,
-      "endIndex": 1030
-    },
-    {
-      "batchIndex": 103,
-      "filename": "batch_103.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_103.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1030,
-      "endIndex": 1040
-    },
-    {
-      "batchIndex": 104,
-      "filename": "batch_104.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_104.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1040,
-      "endIndex": 1050
-    },
-    {
-      "batchIndex": 105,
-      "filename": "batch_105.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_105.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1050,
-      "endIndex": 1060
-    },
-    {
-      "batchIndex": 106,
-      "filename": "batch_106.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_106.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1060,
-      "endIndex": 1070
-    },
-    {
-      "batchIndex": 107,
-      "filename": "batch_107.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_107.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1070,
-      "endIndex": 1080
-    },
-    {
-      "batchIndex": 108,
-      "filename": "batch_108.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_108.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1080,
-      "endIndex": 1090
-    },
-    {
-      "batchIndex": 109,
-      "filename": "batch_109.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_109.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1090,
-      "endIndex": 1100
-    },
-    {
-      "batchIndex": 110,
-      "filename": "batch_110.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_110.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1100,
-      "endIndex": 1110
-    },
-    {
-      "batchIndex": 111,
-      "filename": "batch_111.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_111.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1110,
-      "endIndex": 1120
-    },
-    {
-      "batchIndex": 112,
-      "filename": "batch_112.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_112.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1120,
-      "endIndex": 1130
-    },
-    {
-      "batchIndex": 113,
-      "filename": "batch_113.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_113.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1130,
-      "endIndex": 1140
-    },
-    {
-      "batchIndex": 114,
-      "filename": "batch_114.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_114.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1140,
-      "endIndex": 1150
-    },
-    {
-      "batchIndex": 115,
-      "filename": "batch_115.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_115.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1150,
-      "endIndex": 1160
-    },
-    {
-      "batchIndex": 116,
-      "filename": "batch_116.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_116.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1160,
-      "endIndex": 1170
-    },
-    {
-      "batchIndex": 117,
-      "filename": "batch_117.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_117.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1170,
-      "endIndex": 1180
-    },
-    {
-      "batchIndex": 118,
-      "filename": "batch_118.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_118.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1180,
-      "endIndex": 1190
-    },
-    {
-      "batchIndex": 119,
-      "filename": "batch_119.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_119.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1190,
-      "endIndex": 1200
-    },
-    {
-      "batchIndex": 120,
-      "filename": "batch_120.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_120.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1200,
-      "endIndex": 1210
-    },
-    {
-      "batchIndex": 121,
-      "filename": "batch_121.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_121.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1210,
-      "endIndex": 1220
-    },
-    {
-      "batchIndex": 122,
-      "filename": "batch_122.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_122.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1220,
-      "endIndex": 1230
-    },
-    {
-      "batchIndex": 123,
-      "filename": "batch_123.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_123.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1230,
-      "endIndex": 1240
-    },
-    {
-      "batchIndex": 124,
-      "filename": "batch_124.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_124.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1240,
-      "endIndex": 1250
-    },
-    {
-      "batchIndex": 125,
-      "filename": "batch_125.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_125.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1250,
-      "endIndex": 1260
-    },
-    {
-      "batchIndex": 126,
-      "filename": "batch_126.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_126.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1260,
-      "endIndex": 1270
-    },
-    {
-      "batchIndex": 127,
-      "filename": "batch_127.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_127.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1270,
-      "endIndex": 1280
-    },
-    {
-      "batchIndex": 128,
-      "filename": "batch_128.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_128.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1280,
-      "endIndex": 1290
-    },
-    {
-      "batchIndex": 129,
-      "filename": "batch_129.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_129.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1290,
-      "endIndex": 1300
-    },
-    {
-      "batchIndex": 130,
-      "filename": "batch_130.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_130.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1300,
-      "endIndex": 1310
-    },
-    {
-      "batchIndex": 131,
-      "filename": "batch_131.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_131.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1310,
-      "endIndex": 1320
-    },
-    {
-      "batchIndex": 132,
-      "filename": "batch_132.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_132.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1320,
-      "endIndex": 1330
-    },
-    {
-      "batchIndex": 133,
-      "filename": "batch_133.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_133.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1330,
-      "endIndex": 1340
-    },
-    {
-      "batchIndex": 134,
-      "filename": "batch_134.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_134.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1340,
-      "endIndex": 1350
-    },
-    {
-      "batchIndex": 135,
-      "filename": "batch_135.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_135.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1350,
-      "endIndex": 1360
-    },
-    {
-      "batchIndex": 136,
-      "filename": "batch_136.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_136.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1360,
-      "endIndex": 1370
-    },
-    {
-      "batchIndex": 137,
-      "filename": "batch_137.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_137.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1370,
-      "endIndex": 1380
-    },
-    {
-      "batchIndex": 138,
-      "filename": "batch_138.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_138.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1380,
-      "endIndex": 1390
-    },
-    {
-      "batchIndex": 139,
-      "filename": "batch_139.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_139.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1390,
-      "endIndex": 1400
-    },
-    {
-      "batchIndex": 140,
-      "filename": "batch_140.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_140.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1400,
-      "endIndex": 1410
-    },
-    {
-      "batchIndex": 141,
-      "filename": "batch_141.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_141.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1410,
-      "endIndex": 1420
-    },
-    {
-      "batchIndex": 142,
-      "filename": "batch_142.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_142.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1420,
-      "endIndex": 1430
-    },
-    {
-      "batchIndex": 143,
-      "filename": "batch_143.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_143.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1430,
-      "endIndex": 1440
-    },
-    {
-      "batchIndex": 144,
-      "filename": "batch_144.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_144.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1440,
-      "endIndex": 1450
-    },
-    {
-      "batchIndex": 145,
-      "filename": "batch_145.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_145.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1450,
-      "endIndex": 1460
-    },
-    {
-      "batchIndex": 146,
-      "filename": "batch_146.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_146.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1460,
-      "endIndex": 1470
-    },
-    {
-      "batchIndex": 147,
-      "filename": "batch_147.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_147.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1470,
-      "endIndex": 1480
-    },
-    {
-      "batchIndex": 148,
-      "filename": "batch_148.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_148.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1480,
-      "endIndex": 1490
-    },
-    {
-      "batchIndex": 149,
-      "filename": "batch_149.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_149.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1490,
-      "endIndex": 1500
-    },
-    {
-      "batchIndex": 150,
-      "filename": "batch_150.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_150.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1500,
-      "endIndex": 1510
-    },
-    {
-      "batchIndex": 151,
-      "filename": "batch_151.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_151.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1510,
-      "endIndex": 1520
-    },
-    {
-      "batchIndex": 152,
-      "filename": "batch_152.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_152.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1520,
-      "endIndex": 1530
-    },
-    {
-      "batchIndex": 153,
-      "filename": "batch_153.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_153.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1530,
-      "endIndex": 1540
-    },
-    {
-      "batchIndex": 154,
-      "filename": "batch_154.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_154.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1540,
-      "endIndex": 1550
-    },
-    {
-      "batchIndex": 155,
-      "filename": "batch_155.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_155.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1550,
-      "endIndex": 1560
-    },
-    {
-      "batchIndex": 156,
-      "filename": "batch_156.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_156.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1560,
-      "endIndex": 1570
-    },
-    {
-      "batchIndex": 157,
-      "filename": "batch_157.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_157.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1570,
-      "endIndex": 1580
-    },
-    {
-      "batchIndex": 158,
-      "filename": "batch_158.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_158.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1580,
-      "endIndex": 1590
-    },
-    {
-      "batchIndex": 159,
-      "filename": "batch_159.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_159.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1590,
-      "endIndex": 1600
-    },
-    {
-      "batchIndex": 160,
-      "filename": "batch_160.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_160.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1600,
-      "endIndex": 1610
-    },
-    {
-      "batchIndex": 161,
-      "filename": "batch_161.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_161.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1610,
-      "endIndex": 1620
-    },
-    {
-      "batchIndex": 162,
-      "filename": "batch_162.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_162.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1620,
-      "endIndex": 1630
-    },
-    {
-      "batchIndex": 163,
-      "filename": "batch_163.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_163.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1630,
-      "endIndex": 1640
-    },
-    {
-      "batchIndex": 164,
-      "filename": "batch_164.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_164.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1640,
-      "endIndex": 1650
-    },
-    {
-      "batchIndex": 165,
-      "filename": "batch_165.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_165.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1650,
-      "endIndex": 1660
-    },
-    {
-      "batchIndex": 166,
-      "filename": "batch_166.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_166.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1660,
-      "endIndex": 1670
-    },
-    {
-      "batchIndex": 167,
-      "filename": "batch_167.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_167.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1670,
-      "endIndex": 1680
-    },
-    {
-      "batchIndex": 168,
-      "filename": "batch_168.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_168.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1680,
-      "endIndex": 1690
-    },
-    {
-      "batchIndex": 169,
-      "filename": "batch_169.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_169.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1690,
-      "endIndex": 1700
-    },
-    {
-      "batchIndex": 170,
-      "filename": "batch_170.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_170.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1700,
-      "endIndex": 1710
-    },
-    {
-      "batchIndex": 171,
-      "filename": "batch_171.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_171.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1710,
-      "endIndex": 1720
-    },
-    {
-      "batchIndex": 172,
-      "filename": "batch_172.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_172.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1720,
-      "endIndex": 1730
-    },
-    {
-      "batchIndex": 173,
-      "filename": "batch_173.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_173.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1730,
-      "endIndex": 1740
-    },
-    {
-      "batchIndex": 174,
-      "filename": "batch_174.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_174.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1740,
-      "endIndex": 1750
-    },
-    {
-      "batchIndex": 175,
-      "filename": "batch_175.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_175.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1750,
-      "endIndex": 1760
-    },
-    {
-      "batchIndex": 176,
-      "filename": "batch_176.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_176.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1760,
-      "endIndex": 1770
-    },
-    {
-      "batchIndex": 177,
-      "filename": "batch_177.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_177.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1770,
-      "endIndex": 1780
-    },
-    {
-      "batchIndex": 178,
-      "filename": "batch_178.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_178.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1780,
-      "endIndex": 1790
-    },
-    {
-      "batchIndex": 179,
-      "filename": "batch_179.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_179.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1790,
-      "endIndex": 1800
-    },
-    {
-      "batchIndex": 180,
-      "filename": "batch_180.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_180.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1800,
-      "endIndex": 1810
-    },
-    {
-      "batchIndex": 181,
-      "filename": "batch_181.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_181.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1810,
-      "endIndex": 1820
-    },
-    {
-      "batchIndex": 182,
-      "filename": "batch_182.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_182.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1820,
-      "endIndex": 1830
-    },
-    {
-      "batchIndex": 183,
-      "filename": "batch_183.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_183.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1830,
-      "endIndex": 1840
-    },
-    {
-      "batchIndex": 184,
-      "filename": "batch_184.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_184.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1840,
-      "endIndex": 1850
-    },
-    {
-      "batchIndex": 185,
-      "filename": "batch_185.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_185.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1850,
-      "endIndex": 1860
-    },
-    {
-      "batchIndex": 186,
-      "filename": "batch_186.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_186.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1860,
-      "endIndex": 1870
-    },
-    {
-      "batchIndex": 187,
-      "filename": "batch_187.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_187.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1870,
-      "endIndex": 1880
-    },
-    {
-      "batchIndex": 188,
-      "filename": "batch_188.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_188.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1880,
-      "endIndex": 1890
-    },
-    {
-      "batchIndex": 189,
-      "filename": "batch_189.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_189.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1890,
-      "endIndex": 1900
-    },
-    {
-      "batchIndex": 190,
-      "filename": "batch_190.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_190.json",
-      "size": 10,
+      "size": 89,
       "year": null,
       "startIndex": 1900,
-      "endIndex": 1910
-    },
-    {
-      "batchIndex": 191,
-      "filename": "batch_191.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_191.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1910,
-      "endIndex": 1920
-    },
-    {
-      "batchIndex": 192,
-      "filename": "batch_192.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_192.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1920,
-      "endIndex": 1930
-    },
-    {
-      "batchIndex": 193,
-      "filename": "batch_193.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_193.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1930,
-      "endIndex": 1940
-    },
-    {
-      "batchIndex": 194,
-      "filename": "batch_194.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_194.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1940,
-      "endIndex": 1950
-    },
-    {
-      "batchIndex": 195,
-      "filename": "batch_195.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_195.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1950,
-      "endIndex": 1960
-    },
-    {
-      "batchIndex": 196,
-      "filename": "batch_196.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_196.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1960,
-      "endIndex": 1970
-    },
-    {
-      "batchIndex": 197,
-      "filename": "batch_197.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_197.json",
-      "size": 10,
-      "year": null,
-      "startIndex": 1970,
-      "endIndex": 1980
-    },
-    {
-      "batchIndex": 198,
-      "filename": "batch_198.json",
-      "filePath": "D:\\VS Repos\\script\\batches\\batch_198.json",
-      "size": 9,
-      "year": null,
-      "startIndex": 1980,
       "endIndex": 1989
     }
   ]

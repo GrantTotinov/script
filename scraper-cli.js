@@ -186,12 +186,35 @@ async function scrapeBatch() {
   console.log(`   Skipped: ${result.skipped}`)
   console.log(`   Duration: ${Math.round(result.duration / 1000)}s`)
 
-  // Set GitHub Actions outputs
+  // Save progress for GitHub Actions aggregation
+  const progressData = {
+    batchIndex: batchIndex,
+    successful: result.successful,
+    failed: result.failed,
+    skipped: result.skipped,
+    duration: result.duration,
+    total: result.total,
+    timestamp: new Date().toISOString(),
+  }
+
+  await fs.promises.writeFile(
+    path.join(__dirname, 'scraping_progress.json'),
+    JSON.stringify(progressData, null, 2)
+  )
+
+  // Set GitHub Actions outputs using modern syntax
   if (process.env.GITHUB_ACTIONS) {
-    console.log(`::set-output name=successful::${result.successful}`)
-    console.log(`::set-output name=failed::${result.failed}`)
-    console.log(`::set-output name=skipped::${result.skipped}`)
-    console.log(`::set-output name=duration::${result.duration}`)
+    const outputFile = process.env.GITHUB_OUTPUT
+    if (outputFile) {
+      const outputs = [
+        `successful=${result.successful}`,
+        `failed=${result.failed}`,
+        `skipped=${result.skipped}`,
+        `processed=${result.total}`,
+        `duration=${result.duration}`,
+      ]
+      await fs.promises.appendFile(outputFile, outputs.join('\n') + '\n')
+    }
   }
 }
 

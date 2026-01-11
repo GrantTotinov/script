@@ -149,7 +149,7 @@ jobs:
           echo "Scraping batch ${{ matrix.batch }} of ${{ needs.create-batches.outputs.total-batches }}"
 
           # Run the scraper for this batch
-          node scraper-cli.js scrape-batch ${{ matrix.batch }}
+          node scraper-cli.js scrape-batch
 
           # Check results and set outputs for summary
           if [ -f "scraping_progress.json" ]; then
