@@ -119,13 +119,33 @@ async function createBatches() {
   console.log('\\n📋 GitHub Actions matrix indices:')
   console.log(JSON.stringify(indices))
 
-  // Save matrix to file for easy access
+  // Save matrix to file for easy access (formatted for readability)
   const matrixPath = path.join(__dirname, 'github-matrix.json')
-  await fs.promises.writeFile(
-    matrixPath,
-    JSON.stringify({ batch: indices }, null, 2)
+  const matrixData = { batch: indices }
+
+  // For GitHub Actions compatibility, save as compact JSON (single line)
+  // This ensures it works with both old and new workflow versions
+  await fs.promises.writeFile(matrixPath, JSON.stringify(matrixData))
+
+  // Also save formatted version for local use/readability
+  const formattedMatrixPath = path.join(
+    __dirname,
+    'github-matrix-formatted.json'
   )
-  console.log(`\\n💾 Matrix saved to: ${matrixPath}`)
+  await fs.promises.writeFile(
+    formattedMatrixPath,
+    JSON.stringify(matrixData, null, 2)
+  )
+
+  // Also save compact version for GitHub Actions (explicit name)
+  const compactMatrixPath = path.join(__dirname, 'github-matrix-compact.json')
+  await fs.promises.writeFile(compactMatrixPath, JSON.stringify(matrixData))
+
+  console.log(
+    `\\n💾 Matrix saved to: ${matrixPath} (compact for GitHub Actions)`
+  )
+  console.log(`💾 Formatted matrix saved to: ${formattedMatrixPath}`)
+  console.log(`💾 Compact matrix saved to: ${compactMatrixPath}`)
 }
 
 /**

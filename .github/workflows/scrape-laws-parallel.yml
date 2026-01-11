@@ -77,7 +77,7 @@ jobs:
           echo "Creating batches with strategy: $BATCH_STRATEGY"
           node scraper-cli.js create-batches
 
-          # Read the generated matrix
+          # Read the generated matrix (now in compact format)
           MATRIX=$(cat github-matrix.json)
           echo "matrix=$MATRIX" >> $GITHUB_OUTPUT
 
