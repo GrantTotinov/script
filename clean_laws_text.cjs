@@ -1,14 +1,12 @@
 // Скрипт за почистване на текстовете на законите в all_laws_full.json
-const fs = require('fs');
-const path = require('path');
+const fs = require('fs')
+const path = require('path')
 
-const inputPath = path.join(__dirname, 'public', 'all_laws_full.json');
-const outputPath = path.join(__dirname, 'public', 'all_laws_full_clean.json');
+const inputPath = path.join(__dirname, 'public', 'all_laws_full.json')
+const outputPath = path.join(__dirname, 'public', 'all_laws_full_clean.json')
 
-const raw = fs.readFileSync(inputPath, 'utf8');
-const laws = JSON.parse(raw);
-
-
+const raw = fs.readFileSync(inputPath, 'utf8')
+const laws = JSON.parse(raw)
 
 const STOP_PHRASES = [
   'Законодателство',
@@ -61,38 +59,38 @@ const STOP_PHRASES = [
   'обществени поръчки',
   'Телефонна централа',
   '© 2021 Народно събрание',
-];
+]
 
 const cleanLawText = (text) => {
-  if (!text) return '';
+  if (!text) return ''
   // Търси първото срещане на УКАЗ или ЗАКОН (начало на закона), case-insensitive
-  const match = text.match(/(УКАЗ\s*№.*|ЗАКОН[^\n]*)/is);
+  const match = text.match(/(УКАЗ\s*№.*|ЗАКОН[^\n]*)/is)
   if (match && match.index !== undefined) {
-    const candidate = text.slice(match.index).trim();
+    const candidate = text.slice(match.index).trim()
     // Ако започва със стоп-фраза, не е закон
     for (const stop of STOP_PHRASES) {
       if (candidate.toLowerCase().startsWith(stop.toLowerCase())) {
-        return '';
+        return ''
       }
     }
-    return candidate;
+    return candidate
   }
-  return '';
-};
+  return ''
+}
 
 const cleaned = laws
-  .map(law => {
+  .map((law) => {
     if (!law || typeof law !== 'object') {
-      return null;
+      return null
     }
-    const cleanedText = cleanLawText(law.text);
-    if (!cleanedText) return null;
+    const cleanedText = cleanLawText(law.text)
+    if (!cleanedText) return null
     return {
       ...law,
-      text: cleanedText
-    };
+      text: cleanedText,
+    }
   })
-  .filter(Boolean);
+  .filter(Boolean)
 
-fs.writeFileSync(outputPath, JSON.stringify(cleaned, null, 2), 'utf8');
-console.log(`Готово! Записано в ${outputPath}`);
+fs.writeFileSync(outputPath, JSON.stringify(cleaned, null, 2), 'utf8')
+console.log(`Готово! Записано в ${outputPath}`)

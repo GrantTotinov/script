@@ -1,0 +1,315 @@
+name: Scrape Bulgarian Laws (Parallel)
+
+on:
+  workflow_dispatch:
+    inputs:
+      batch_strategy:
+        description: 'Batch creation strategy (size, year, equal)'
+        required: false
+        default: 'size'
+        type: choice
+        options:
+          - size
+          - year
+          - equal
+      batch_size:
+        description: 'Number of laws per batch'
+        required: false
+        default: '100'
+        type: string
+      max_retries:
+        description: 'Maximum retry attempts per law'
+        required: false
+        default: '3'
+        type: string
+      concurrency:
+        description: 'Number of concurrent browsers per worker'
+        required: false
+        default: '3'
+        type: string
+      delay_ms:
+        description: 'Delay between requests (milliseconds)'
+        required: false
+        default: '2000'
+        type: string
+
+  schedule:
+    # Run weekly on Sundays at 2 AM UTC
+    - cron: '0 2 * * 0'
+
+env:
+  BATCH_STRATEGY: ${{ github.event.inputs.batch_strategy || 'size' }}
+  BATCH_SIZE: ${{ github.event.inputs.batch_size || '100' }}
+  MAX_RETRIES: ${{ github.event.inputs.max_retries || '3' }}
+  CONCURRENCY: ${{ github.event.inputs.concurrency || '3' }}
+  DELAY_MS: ${{ github.event.inputs.delay_ms || '2000' }}
+  HEADLESS: 'true'
+
+jobs:
+  # Job 1: Create batches and generate matrix
+  create-batches:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.create-batches.outputs.matrix }}
+      total-batches: ${{ steps.create-batches.outputs.total-batches }}
+      total-laws: ${{ steps.create-batches.outputs.total-laws }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+
+      - name: Create batches
+        id: create-batches
+        run: |
+          echo "Creating batches with strategy: $BATCH_STRATEGY"
+          node scraper-cli.js create-batches
+
+          # Read the generated matrix
+          MATRIX=$(cat github-matrix.json)
+          echo "matrix=$MATRIX" >> $GITHUB_OUTPUT
+
+          # Read batch configuration for metadata
+          BATCH_CONFIG=$(cat batch-config.json)
+          TOTAL_BATCHES=$(echo $BATCH_CONFIG | jq -r '.totalBatches')
+          TOTAL_LAWS=$(echo $BATCH_CONFIG | jq -r '.totalLaws')
+
+          echo "total-batches=$TOTAL_BATCHES" >> $GITHUB_OUTPUT
+          echo "total-laws=$TOTAL_LAWS" >> $GITHUB_OUTPUT
+
+          echo "Created $TOTAL_BATCHES batches for $TOTAL_LAWS laws"
+
+      - name: Upload batch files
+        uses: actions/upload-artifact@v4
+        with:
+          name: batch-files
+          path: |
+            batches/
+            batch-config.json
+            github-matrix.json
+          retention-days: 7
+
+      - name: Summary
+        run: |
+          echo "## Batch Creation Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- **Strategy**: $BATCH_STRATEGY" >> $GITHUB_STEP_SUMMARY
+          echo "- **Total Laws**: ${{ steps.create-batches.outputs.total-laws }}" >> $GITHUB_STEP_SUMMARY  
+          echo "- **Total Batches**: ${{ steps.create-batches.outputs.total-batches }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Batch Size**: $BATCH_SIZE" >> $GITHUB_STEP_SUMMARY
+
+  # Job 2: Scrape laws in parallel
+  scrape-parallel:
+    needs: create-batches
+    if: needs.create-batches.outputs.total-batches > 0
+    runs-on: ubuntu-latest
+
+    strategy:
+      max-parallel: 10 # Limit concurrent jobs to avoid overwhelming the server
+      fail-fast: false # Continue other jobs even if some fail
+      matrix:
+        batch: ${{ fromJson(needs.create-batches.outputs.matrix.batch) }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+
+      - name: Download batch files
+        uses: actions/download-artifact@v4
+        with:
+          name: batch-files
+
+      - name: Scrape batch ${{ matrix.batch }}
+        id: scrape
+        env:
+          BATCH_INDEX: ${{ matrix.batch }}
+        run: |
+          echo "Scraping batch ${{ matrix.batch }} of ${{ needs.create-batches.outputs.total-batches }}"
+
+          # Run the scraper for this batch
+          node scraper-cli.js scrape-batch ${{ matrix.batch }}
+
+          # Check results and set outputs for summary
+          if [ -f "scraping_progress.json" ]; then
+            PROGRESS=$(cat scraping_progress.json)
+            SUCCESSFUL=$(echo $PROGRESS | jq -r '.successful // 0')
+            FAILED=$(echo $PROGRESS | jq -r '.failed // 0')
+            PROCESSED=$(echo $PROGRESS | jq -r '.processed // 0')
+            
+            echo "successful=$SUCCESSFUL" >> $GITHUB_OUTPUT
+            echo "failed=$FAILED" >> $GITHUB_OUTPUT
+            echo "processed=$PROCESSED" >> $GITHUB_OUTPUT
+            
+            echo "Batch ${{ matrix.batch }}: $SUCCESSFUL successful, $FAILED failed"
+          fi
+
+      - name: Upload scraped laws
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scraped-laws-batch-${{ matrix.batch }}
+          path: scraped_laws/
+          retention-days: 30
+
+      - name: Upload failed laws log
+        if: failure() || always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: failed-laws-batch-${{ matrix.batch }}
+          path: failed_laws.json
+          retention-days: 30
+          if-no-files-found: ignore
+
+      - name: Upload progress log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: progress-batch-${{ matrix.batch }}
+          path: scraping_progress.json
+          retention-days: 7
+          if-no-files-found: ignore
+
+  # Job 3: Aggregate results and create summary
+  aggregate-results:
+    needs: [create-batches, scrape-parallel]
+    if: always()
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts/
+
+      - name: Aggregate scraped laws
+        run: |
+          echo "Aggregating scraped laws from all batches..."
+          mkdir -p final_results/scraped_laws
+          mkdir -p final_results/failed_logs
+
+          # Combine all scraped laws
+          find artifacts/scraped-laws-batch-* -name "*.json" -exec cp {} final_results/scraped_laws/ \; 2>/dev/null || true
+
+          # Combine all failed logs
+          find artifacts/failed-laws-batch-* -name "failed_laws.json" -exec cat {} \; | jq -s 'add' > final_results/failed_logs/all_failed_laws.json 2>/dev/null || echo "[]" > final_results/failed_logs/all_failed_laws.json
+
+          # Count results
+          SCRAPED_COUNT=$(find final_results/scraped_laws -name "*.json" | wc -l)
+          FAILED_COUNT=$(jq length final_results/failed_logs/all_failed_laws.json)
+
+          echo "SCRAPED_COUNT=$SCRAPED_COUNT" >> $GITHUB_ENV
+          echo "FAILED_COUNT=$FAILED_COUNT" >> $GITHUB_ENV
+
+          echo "Aggregated $SCRAPED_COUNT scraped laws and $FAILED_COUNT failures"
+
+      - name: Create final summary
+        run: |
+          echo "## 📊 Scraping Results Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Overall Statistics" >> $GITHUB_STEP_SUMMARY
+          echo "- **Total Laws in Dataset**: ${{ needs.create-batches.outputs.total-laws }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Total Batches Created**: ${{ needs.create-batches.outputs.total-batches }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Successfully Scraped**: $SCRAPED_COUNT" >> $GITHUB_STEP_SUMMARY
+          echo "- **Failed to Scrape**: $FAILED_COUNT" >> $GITHUB_STEP_SUMMARY
+
+          # Calculate completion percentage
+          TOTAL_LAWS=${{ needs.create-batches.outputs.total-laws }}
+          if [ "$TOTAL_LAWS" -gt 0 ]; then
+            COMPLETION=$(echo "scale=2; ($SCRAPED_COUNT * 100) / $TOTAL_LAWS" | bc)
+            echo "- **Completion Rate**: ${COMPLETION}%" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Configuration Used" >> $GITHUB_STEP_SUMMARY
+          echo "- **Batch Strategy**: $BATCH_STRATEGY" >> $GITHUB_STEP_SUMMARY
+          echo "- **Batch Size**: $BATCH_SIZE" >> $GITHUB_STEP_SUMMARY
+          echo "- **Max Retries**: $MAX_RETRIES" >> $GITHUB_STEP_SUMMARY
+          echo "- **Concurrency**: $CONCURRENCY" >> $GITHUB_STEP_SUMMARY
+          echo "- **Delay Between Requests**: ${DELAY_MS}ms" >> $GITHUB_STEP_SUMMARY
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📁 Artifacts" >> $GITHUB_STEP_SUMMARY
+          echo "- Individual batch results are available in the artifacts section" >> $GITHUB_STEP_SUMMARY
+          echo "- Final aggregated results are uploaded as 'final-scraped-laws'" >> $GITHUB_STEP_SUMMARY
+          if [ "$FAILED_COUNT" -gt 0 ]; then
+            echo "- Failed laws log is available as 'final-failed-laws'" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Upload final scraped laws
+        uses: actions/upload-artifact@v4
+        with:
+          name: final-scraped-laws
+          path: final_results/scraped_laws/
+          retention-days: 90
+
+      - name: Upload final failed laws log
+        if: env.FAILED_COUNT != '0'
+        uses: actions/upload-artifact@v4
+        with:
+          name: final-failed-laws
+          path: final_results/failed_logs/all_failed_laws.json
+          retention-days: 90
+
+      - name: Commit results to repository (optional)
+        if: github.event.inputs.commit_results == 'true'
+        run: |
+          # This section is optional - uncomment to commit results back to repo
+          # git config --local user.email "action@github.com"
+          # git config --local user.name "GitHub Action"
+          # 
+          # # Create or update results directory
+          # mkdir -p results/$(date +%Y-%m-%d)
+          # cp -r final_results/scraped_laws results/$(date +%Y-%m-%d)/
+          # 
+          # git add results/
+          # git commit -m "Add scraped laws results for $(date +%Y-%m-%d)" || exit 0
+          # git push
+
+          echo "Skipping commit - enable by setting commit_results input to true"
+
+  # Job 4: Cleanup old artifacts (optional, runs on schedule)
+  cleanup:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete old workflow runs
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          retain_days: 30
+          keep_minimum_runs: 10
