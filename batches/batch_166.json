@@ -1,0 +1,62 @@
+{
+  "batchIndex": 166,
+  "totalBatches": 199,
+  "size": 10,
+  "startIndex": 1660,
+  "endIndex": 1670,
+  "year": null,
+  "subBatch": null,
+  "createdAt": "2026-01-11T01:13:26.153Z",
+  "laws": [
+    {
+      "title": "10/06/2011 Закон за военната полиция",
+      "date": "",
+      "link": "https://www.parliament.bg/bg/laws/ID/12703"
+    },
+    {
+      "title": "09/06/2011 Закон за ратифициране на Хартата на Международния енергиен форум",
+      "date": "",
+      "link": "https://www.parliament.bg/bg/laws/ID/13543"
+    },
+    {
+      "title": "08/06/2011 Закон за изменение и допълнение на Закона за железопътния транспорт",
+      "date": "",
+      "link": "https://www.parliament.bg/bg/laws/ID/12712"
+    },
+    {
+      "title": "08/06/2011 Закон за изменение и допълнение на Закона за Министерството на вътрешните работи",
+      "date": "",
+      "link": "https://www.parliament.bg/bg/laws/ID/12714"
+    },
+    {
+      "title": "02/06/2011 Закон за изменение и допълнение на Закона за лечебните заведения",
+      "date": "",
+      "link": "https://www.parliament.bg/bg/laws/ID/13546"
+    },
+    {
+      "title": "02/06/2011 Закон за изменение и допълнение на Изборния кодекс",
+      "date": "",
+      "link": "https://www.parliament.bg/bg/laws/ID/13552"
+    },
+    {
+      "title": "25/05/2011 Закон за изменение и допълнение на Закона за частната охранителна дейност",
+      "date": "",
+      "link": "https://www.parliament.bg/bg/laws/ID/10095"
+    },
+    {
+      "title": "25/05/2011 Закон за изменение и допълнение на Закона за насърчаване на заетостта",
+      "date": "",
+      "link": "https://www.parliament.bg/bg/laws/ID/12710"
+    },
+    {
+      "title": "19/05/2011 Закон за изменение и допълнение на Закона за стоковите борси и тържищата",
+      "date": "",
+      "link": "https://www.parliament.bg/bg/laws/ID/11322"
+    },
+    {
+      "title": "19/05/2011 Закон за изменение и допълнение на Закона за опазване на околната среда",
+      "date": "",
+      "link": "https://www.parliament.bg/bg/laws/ID/12701"
+    }
+  ]
+}

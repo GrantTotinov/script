@@ -5,9 +5,11 @@
  * into a single comprehensive dataset with statistics
  */
 
-const fs = require('fs')
-const path = require('path')
+import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 class ResultAggregator {
   constructor(options = {}) {
     this.scrapedDir = options.scrapedDir || path.join(__dirname, 'scraped_laws')
@@ -188,7 +190,7 @@ END OF REPORT
 }
 
 // CLI usage
-if (require.main === module) {
+if (import.meta.url === `file://${process.argv[1]}`) {
   const aggregator = new ResultAggregator()
 
   const command = process.argv[2] || 'aggregate'
@@ -200,4 +202,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = ResultAggregator
+export default ResultAggregator

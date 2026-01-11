@@ -23,7 +23,7 @@
     "example:cleanup": "node example.js cleanup",
     "aggregate": "node result-aggregator.js",
     "aggregate:report": "node result-aggregator.js report",
-    "test:scraper": "node -e \"console.log('Testing scraper setup...'); require('./law-scraper.js'); require('./batch-processor.js'); require('./schemas.js'); console.log('✅ All modules loaded successfully');\"",
+    "test:scraper": "node scraper-cli.js help",
     "install:playwright": "npx playwright install --with-deps chromium"
   },
   "dependencies": {

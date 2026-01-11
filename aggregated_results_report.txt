@@ -1,0 +1,28 @@
+
+BULGARIAN LAWS SCRAPING REPORT
+===============================
+
+Generated: 2026-01-11T01:18:39.213Z
+
+SUMMARY
+-------
+Total Laws Processed: 10
+Successfully Scraped: 10
+With Errors: 0
+Completely Failed: 0
+
+TEXT STATISTICS  
+---------------
+Total Text Length: 139 406 characters
+Average Text Length: 13 941 characters
+Minimum Text Length: 517 characters
+Maximum Text Length: 82 143 characters
+
+SUCCESS RATE
+-----------
+Overall Success Rate: 100.00%
+Completion Rate: 100.00%
+
+
+
+END OF REPORT

@@ -64,55 +64,58 @@
  * @property {string} batchId - Which batch this failure occurred in
  */
 
-module.exports = {
-  // Helper function to validate input law
-  validateInputLaw: (law) => {
-    if (!law || typeof law !== 'object') return false
-    if (typeof law.title !== 'string' || !law.title.trim()) return false
-    if (typeof law.date !== 'string') return false
-    if (typeof law.link !== 'string' || !law.link.includes('parliament.bg'))
-      return false
-    return true
-  },
+// Helper function to validate input law
+export const validateInputLaw = (law) => {
+  if (!law || typeof law !== 'object') return false
+  if (typeof law.title !== 'string' || !law.title.trim()) return false
+  if (typeof law.date !== 'string') return false
+  if (typeof law.link !== 'string' || !law.link.includes('parliament.bg'))
+    return false
+  return true
+}
 
-  // Helper function to extract law ID from URL
-  extractLawId: (url) => {
-    const match = url.match(/\/ID\/(\d+)/)
-    return match ? match[1] : null
-  },
+// Helper function to extract law ID from URL
+export const extractLawId = (url) => {
+  const match = url.match(/\/ID\/(\d+)/)
+  return match ? match[1] : null
+}
 
-  // Helper function to create a scraped law object
-  createScrapedLaw: (inputLaw, scrapingData = {}) => {
-    const lawId = module.exports.extractLawId(inputLaw.link)
-    return {
-      title: inputLaw.title,
-      date: inputLaw.date,
-      link: inputLaw.link,
-      lawId: lawId,
-      actualTitle: scrapingData.actualTitle || '',
-      metadata: scrapingData.metadata || [],
-      fullText: scrapingData.fullText || '',
-      textLength: (scrapingData.fullText || '').length,
-      scrapedAt: new Date().toISOString(),
-      isComplete: Boolean(
-        scrapingData.fullText && scrapingData.fullText.length > 50
-      ),
-      error: scrapingData.error || null,
-      retryCount: scrapingData.retryCount || 0,
-    }
-  },
+// Helper function to create a scraped law object
+export const createScrapedLaw = (inputLaw, scrapingData = {}) => {
+  const lawId = extractLawId(inputLaw.link)
+  return {
+    title: inputLaw.title,
+    date: inputLaw.date,
+    link: inputLaw.link,
+    lawId: lawId,
+    actualTitle: scrapingData.actualTitle || '',
+    metadata: scrapingData.metadata || [],
+    fullText: scrapingData.fullText || '',
+    textLength: (scrapingData.fullText || '').length,
+    scrapedAt: new Date().toISOString(),
+    isComplete: Boolean(
+      scrapingData.fullText && scrapingData.fullText.length > 50
+    ),
+    error: scrapingData.error || null,
+    retryCount: scrapingData.retryCount || 0,
+  }
+}
 
-  // Helper function to create a failed law entry
-  createFailedLaw: (inputLaw, error, retryCount = 0, batchId = '') => {
-    const lawId = module.exports.extractLawId(inputLaw.link)
-    return {
-      lawId: lawId,
-      link: inputLaw.link,
-      title: inputLaw.title,
-      error: error,
-      retryCount: retryCount,
-      failedAt: new Date().toISOString(),
-      batchId: batchId,
-    }
-  },
+// Helper function to create a failed law entry
+export const createFailedLaw = (
+  inputLaw,
+  error,
+  retryCount = 0,
+  batchId = ''
+) => {
+  const lawId = extractLawId(inputLaw.link)
+  return {
+    lawId: lawId,
+    link: inputLaw.link,
+    title: inputLaw.title,
+    error: error,
+    retryCount: retryCount,
+    failedAt: new Date().toISOString(),
+    batchId: batchId,
+  }
 }

@@ -7,12 +7,14 @@
  * with different configurations and scenarios.
  */
 
-const BulgarianLawsScraper = require('./law-scraper.js')
-const BatchProcessor = require('./batch-processor.js')
-const ResultAggregator = require('./result-aggregator.js')
-const fs = require('fs')
-const path = require('path')
+import BulgarianLawsScraper from './law-scraper.js'
+import BatchProcessor from './batch-processor.js'
+import ResultAggregator from './result-aggregator.js'
+import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 // Example configurations for different scenarios
 const SCENARIOS = {
   // Quick test with just a few laws
@@ -271,7 +273,7 @@ function getScenarioDescription(name, config) {
 }
 
 // CLI handling
-if (require.main === module) {
+if (import.meta.url === `file://${process.argv[1]}`) {
   const command = process.argv[2]
 
   if (command === 'help' || command === '--help' || command === '-h') {

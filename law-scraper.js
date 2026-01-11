@@ -11,15 +11,18 @@
  * - Individual file saving per law
  */
 
-const { chromium } = require('playwright')
-const fs = require('fs')
-const path = require('path')
-const {
+import { chromium } from 'playwright'
+import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
+import {
   createScrapedLaw,
   createFailedLaw,
   extractLawId,
   validateInputLaw,
-} = require('./schemas.js')
+} from './schemas.js'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 class BulgarianLawsScraper {
   constructor(options = {}) {
@@ -609,4 +612,4 @@ class BulgarianLawsScraper {
   }
 }
 
-module.exports = BulgarianLawsScraper
+export default BulgarianLawsScraper

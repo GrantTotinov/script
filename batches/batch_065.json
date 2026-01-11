@@ -1,0 +1,62 @@
+{
+  "batchIndex": 65,
+  "totalBatches": 199,
+  "size": 10,
+  "startIndex": 650,
+  "endIndex": 660,
+  "year": null,
+  "subBatch": null,
+  "createdAt": "2026-01-11T01:13:25.648Z",
+  "laws": [
+    {
+      "title": "12/09/2019 Закон за изменение и допълнение на Закона за електронните съобщения",
+      "date": "",
+      "link": "https://www.parliament.bg/bg/laws/ID/157093"
+    },
+    {
+      "title": "12/09/2019 Закон за изменение и допълнение на Закона за лова и опазване на дивеча",
+      "date": "",
+      "link": "https://www.parliament.bg/bg/laws/ID/157127"
+    },
+    {
+      "title": "11/09/2019 Закон за ратифициране на Протокола за изменение на Конвенцията за защита на лицата при автоматизираната обработка на лични данни",
+      "date": "",
+      "link": "https://www.parliament.bg/bg/laws/ID/157126"
+    },
+    {
+      "title": "05/09/2019 Закон за изменение и допълнение на Закона за военното разузнаване",
+      "date": "",
+      "link": "https://www.parliament.bg/bg/laws/ID/157094"
+    },
+    {
+      "title": "04/09/2019 Закон за изменение и допълнение на Закона за измерванията",
+      "date": "",
+      "link": "https://www.parliament.bg/bg/laws/ID/157037"
+    },
+    {
+      "title": "31/07/2019 Закон за изменение и допълнение на Закона за физическото възпитание и спорта",
+      "date": "",
+      "link": "https://www.parliament.bg/bg/laws/ID/156972"
+    },
+    {
+      "title": "31/07/2019 Закон за изменение и допълнение на Закона за съсловната организация на магистър-фармацевтите",
+      "date": "",
+      "link": "https://www.parliament.bg/bg/laws/ID/156985"
+    },
+    {
+      "title": "31/07/2019 Закон за изменение и допълнение на Данъчно-осигурителния процесуален кодекс",
+      "date": "",
+      "link": "https://www.parliament.bg/bg/laws/ID/156998"
+    },
+    {
+      "title": "31/07/2019 Закон за изменение и допълнение на Закона за забрана на химическото оръжие и за контрол на токсичните химически вещества и техните прекурсори",
+      "date": "",
+      "link": "https://www.parliament.bg/bg/laws/ID/157054"
+    },
+    {
+      "title": "26/07/2019 Закон за ратифициране на международен договор (LOA) BU-D-SAB \"Самолети F-16 Block 70 и свързана с тях поддръжка\" (F-16 Block 70 aircraft and associated support), международен договор (LOA) BU-D-AAA \"Боеприпаси в подкрепа на F-16\" (Munitions in support of the F-16), международен договор (LOA) BU-P-AAD \"Sidewinder AIM 9X Блок II ракети, свързани материали и услуги\" (Sidewinder AIM 9X Block II Missiles, associated material and services) и международен договор (LOA) BU-P-LAR \"Многофункционална система за разпределение на информация - Съвместна тактическа радиосистема (MIDS JTRS) (5) и свързана с нея поддръжка и оборудване\" (Multifunctional Information Distribution System Joint Tactical Radio System (MIDS JTRS) (5) and related support and equipment)",
+      "date": "",
+      "link": "https://www.parliament.bg/bg/laws/ID/157091"
+    }
+  ]
+}

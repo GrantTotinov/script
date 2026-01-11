@@ -8,9 +8,12 @@
  * - Creating batch files for GitHub Actions matrix processing
  */
 
-const fs = require('fs')
-const path = require('path')
-const { extractLawId, validateInputLaw } = require('./schemas.js')
+import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
+import { extractLawId, validateInputLaw } from './schemas.js'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 class BatchProcessor {
   constructor(options = {}) {
@@ -423,4 +426,4 @@ class BatchProcessor {
   }
 }
 
-module.exports = BatchProcessor
+export default BatchProcessor

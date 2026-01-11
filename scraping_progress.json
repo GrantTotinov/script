@@ -1,0 +1,10 @@
+{
+  "batchId": "batch_0",
+  "processed": 10,
+  "successful": 10,
+  "failed": 0,
+  "skipped": 0,
+  "startTime": "2026-01-11T01:16:29.607Z",
+  "isComplete": true,
+  "lastUpdate": "2026-01-11T01:16:59.844Z"
+}

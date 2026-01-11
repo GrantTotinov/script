@@ -9,11 +9,15 @@
  * - Resume capabilities and progress tracking
  */
 
-const BulgarianLawsScraper = require('./law-scraper.js')
-const BatchProcessor = require('./batch-processor.js')
-const fs = require('fs')
-const path = require('path')
+import BulgarianLawsScraper from './law-scraper.js'
+import BatchProcessor from './batch-processor.js'
+import ResultAggregator from './result-aggregator.js'
+import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
+import { pathToFileURL } from 'url'
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 // Parse command line arguments
 const args = process.argv.slice(2)
 const command = args[0]
@@ -65,6 +69,10 @@ async function main() {
 
       case 'cleanup':
         await cleanup()
+        break
+
+      case 'aggregate-results':
+        await aggregateResults()
         break
 
       case 'help':
@@ -253,10 +261,12 @@ async function resumeScraping() {
 
   // Find incomplete batches
   const incompleteBatches = []
+  const { extractLawId } = await import('./schemas.js')
+
   for (const batch of batchConfig.batches) {
     const batchData = await processor.getBatchData(batch.batchIndex)
     const unscrapedLaws = batchData.laws.filter((law) => {
-      const lawId = require('./schemas.js').extractLawId(law.link)
+      const lawId = extractLawId(law.link)
       return !scrapedLawIds.has(lawId)
     })
 
@@ -352,14 +362,19 @@ async function showStatus() {
 
   // Batch-level status
   console.log('\\n📦 Batch Status:')
+  const { extractLawId } = await import('./schemas.js')
+
   for (const batch of batchConfig.batches.slice(0, 10)) {
     // Show first 10 batches
     const batchData = await processor.getBatchData(batch.batchIndex)
-    const batchScraped = batchData.laws.filter((law) => {
-      const lawId = require('./schemas.js').extractLawId(law.link)
+    let batchScraped = 0
+    for (const law of batchData.laws) {
+      const lawId = extractLawId(law.link)
       const filePath = path.join(config.outputDir, `${lawId}.json`)
-      return fs.existsSync(filePath)
-    }).length
+      if (fs.existsSync(filePath)) {
+        batchScraped++
+      }
+    }
 
     const batchCompletion = ((batchScraped / batch.size) * 100).toFixed(1)
     console.log(
@@ -403,6 +418,37 @@ async function cleanup() {
 }
 
 /**
+ * Aggregate scraped results into a single file
+ */
+async function aggregateResults() {
+  console.log('Aggregating scraped results...')
+
+  const aggregator = new ResultAggregator({
+    scrapedDir: config.outputDir,
+    outputPath: path.join(__dirname, 'aggregated_results.json'),
+    failedLogPath: path.join(__dirname, 'failed_laws.json'),
+  })
+
+  const result = await aggregator.aggregate()
+
+  console.log('\n📋 Results Summary:')
+  console.log(`   Total scraped files: ${result.metadata.totalScrapedLaws}`)
+  console.log(`   Successful: ${result.metadata.successfulLaws}`)
+  console.log(`   With errors: ${result.metadata.errorLaws}`)
+  console.log(`   Failed: ${result.metadata.failedLaws}`)
+  console.log(
+    `   Success rate: ${(
+      (result.metadata.successfulLaws /
+        (result.metadata.totalScrapedLaws + result.metadata.failedLaws)) *
+      100
+    ).toFixed(2)}%`
+  )
+
+  // Generate report as well
+  await aggregator.generateReport()
+}
+
+/**
  * Show help information
  */
 function showHelp() {
@@ -419,6 +465,7 @@ Commands:
   resume            Resume scraping from previous session
   status            Show current scraping status
   cleanup           Clean up batch files and temporary data
+  aggregate-results Aggregate all scraped results into single file
   help              Show this help message
 
 Examples:
@@ -437,6 +484,9 @@ Examples:
   # Check progress
   node scraper-cli.js status
 
+  # Aggregate all results
+  node scraper-cli.js aggregate-results
+
 Environment Variables:
   BATCH_SIZE=100               Number of laws per batch
   MAX_RETRIES=3               Maximum retry attempts per law
@@ -454,18 +504,20 @@ GitHub Actions Integration:
 }
 
 // Run CLI
-if (require.main === module) {
+const isMainModule = import.meta.url === pathToFileURL(process.argv[1]).href
+if (isMainModule) {
   main().catch((error) => {
     console.error(`Fatal error: ${error.message}`)
     process.exit(1)
   })
 }
 
-module.exports = {
+export {
   createBatches,
   scrapeBatch,
   scrapeAll,
   resumeScraping,
   showStatus,
   cleanup,
+  aggregateResults,
 }
