@@ -65,13 +65,13 @@ jobs:
         run: |
           node -e "
           const fs = require('fs');
-          
+
           // Load all laws that need enhancement
           let allLaws = [];
           if (fs.existsSync('./laws_to_rescrape.json')) {
             allLaws = JSON.parse(fs.readFileSync('./laws_to_rescrape.json', 'utf8'));
           }
-          
+
           console.log(\`Total laws in rescrape list: \${allLaws.length}\`);
 
           // Remove already enhanced laws
@@ -88,17 +88,27 @@ jobs:
           }
 
           console.log(\`Laws remaining to enhance: \${allLaws.length}\`);
+
+          const batchSize = parseInt('25');
+          const batches = [];
+
+          for (let i = 0; i < allLaws.length; i += batchSize) {
+            const batch = allLaws.slice(i, i + batchSize);
+            batches.push({
+              id: Math.floor(i / batchSize),
+              laws: batch,
+              start: batch[0],
               end: batch[batch.length - 1],
               count: batch.length
             });
           }
-          
+
           console.log(\`Created \${batches.length} batches\`);
-          
+
           // Save matrix for GitHub Actions
           const matrix = { batch: batches };
           fs.writeFileSync('batches-matrix.json', JSON.stringify(matrix, null, 2));
-          
+
           // Output for GitHub Actions
           fs.appendFileSync(process.env.GITHUB_OUTPUT, \`matrix=\${JSON.stringify(matrix)}\\n\`);
           fs.appendFileSync(process.env.GITHUB_OUTPUT, \`total-batches=\${batches.length}\\n\`);
