@@ -72,26 +72,22 @@ jobs:
             allLaws = JSON.parse(fs.readFileSync('./laws_to_rescrape.json', 'utf8'));
           }
           
+          console.log(\`Total laws in rescrape list: \${allLaws.length}\`);
+
           // Remove already enhanced laws
           const enhancedDir = './scraped_laws_enhanced';
           if (fs.existsSync(enhancedDir)) {
             const enhanced = fs.readdirSync(enhancedDir)
               .filter(f => f.endsWith('.json') && !f.includes('summary'))
               .map(f => f.replace('.json', ''));
+            
+            console.log(\`Already enhanced: \${enhanced.length}\`);
+            console.log('Enhanced files:', enhanced.slice(0, 10));
+            
             allLaws = allLaws.filter(id => !enhanced.includes(id.toString()));
           }
-          
-          console.log(\`Laws to enhance: \${allLaws.length}\`);
-          
-          const batchSize = parseInt('${{ inputs.batch_size }}');
-          const batches = [];
-          
-          for (let i = 0; i < allLaws.length; i += batchSize) {
-            const batch = allLaws.slice(i, i + batchSize);
-            batches.push({
-              id: Math.floor(i / batchSize),
-              laws: batch,
-              start: batch[0],
+
+          console.log(\`Laws remaining to enhance: \${allLaws.length}\`);
               end: batch[batch.length - 1],
               count: batch.length
             });
