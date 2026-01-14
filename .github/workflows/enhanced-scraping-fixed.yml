@@ -1,0 +1,401 @@
+name: Enhanced Scraping Parallel - Fixed Permissions
+
+on:
+  workflow_dispatch:
+    inputs:
+      batch_start:
+        description: 'Start batch number'
+        required: true
+        default: '15'
+        type: string
+      batch_end:
+        description: 'End batch number'
+        required: true
+        default: '41'
+        type: string
+      batch_size:
+        description: 'Laws per batch'
+        required: true
+        default: '50'
+        type: string
+
+permissions:
+  contents: write
+  actions: read
+
+env:
+  HEADLESS: true
+
+jobs:
+  enhanced-scraping-commit:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 5 # Ограничаваме да не претоварваме
+      matrix:
+        batch:
+          [
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+          ]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+
+      - name: Process Enhanced Batch ${{ matrix.batch }}
+        timeout-minutes: 60
+        run: |
+          echo "🚀 Processing enhanced batch ${{ matrix.batch }}"
+
+          # Check if batch file exists
+          if [ ! -f "enhanced_batch_${{ matrix.batch }}.json" ]; then
+            echo "⚠️  Batch file enhanced_batch_${{ matrix.batch }}.json not found, skipping..."
+            exit 0
+          fi
+
+          # Run enhanced scraper for this batch
+          node -e "
+          const { chromium } = require('playwright');
+          const fs = require('fs');
+
+          class GitHubActionsScraper {
+            constructor() {
+              this.browser = null;
+              this.page = null;
+              this.options = {
+                headless: true,
+                timeout: 45000,
+                maxRetries: 3,
+                delay: 2000,
+                waitForContent: 5000,
+                scrollDelay: 1000,
+                maxScrollAttempts: 5
+              };
+            }
+            
+            async init() {
+              this.browser = await chromium.launch({
+                headless: true,
+                args: [
+                  '--no-sandbox',
+                  '--disable-setuid-sandbox', 
+                  '--disable-dev-shm-usage',
+                  '--disable-web-security',
+                  '--max-old-space-size=4096'
+                ]
+              });
+              this.page = await this.browser.newPage();
+              this.page.setDefaultTimeout(this.options.timeout);
+            }
+            
+            async scrapeLaw(law) {
+              const startTime = Date.now();
+              console.log(\`🎯 [Enhanced] Scraping law \${law.id}...\`);
+              
+              try {
+                const url = \`https://www.parliament.bg/bg/laws/ID/\${law.id}\`;
+                console.log(\`   ⏳ Navigating to \${url}...\`);
+                
+                await this.page.goto(url, { 
+                  waitUntil: 'networkidle', 
+                  timeout: this.options.timeout 
+                });
+                
+                console.log('   ⏳ Waiting for content to load...');
+                await this.page.waitForTimeout(this.options.waitForContent);
+                
+                // Enhanced scrolling
+                console.log('   📜 Performing enhanced scrolling...');
+                let prevHeight = 0;
+                let stableCount = 0;
+                
+                for (let i = 0; i < this.options.maxScrollAttempts; i++) {
+                  await this.page.evaluate(() => {
+                    window.scrollTo(0, document.body.scrollHeight);
+                  });
+                  
+                  await this.page.waitForTimeout(this.options.scrollDelay);
+                  
+                  const currentHeight = await this.page.evaluate(() => document.body.scrollHeight);
+                  
+                  if (currentHeight === prevHeight) {
+                    stableCount++;
+                    if (stableCount >= 3) break;
+                  } else {
+                    stableCount = 0;
+                  }
+                  
+                  prevHeight = currentHeight;
+                  console.log(\`     📜 Scroll attempt \${i + 1}: \${currentHeight}px (stable: \${stableCount})\`);
+                }
+                
+                // Multiple extraction strategies
+                const strategies = await this.page.evaluate(() => {
+                  const results = {};
+                  
+                  // Strategy 1: Main content
+                  const main = document.querySelector('main');
+                  if (main) {
+                    const cloned = main.cloneNode(true);
+                    const unwanted = cloned.querySelectorAll('script, style, nav, header, footer, .menu, .navigation, .sidebar, .breadcrumb, .print, .share');
+                    unwanted.forEach(el => el.remove());
+                    results.strategy1 = cloned.textContent?.trim() || '';
+                  }
+                  
+                  // Strategy 2: Body content  
+                  const body = document.body.cloneNode(true);
+                  const unwanted2 = body.querySelectorAll('script, style, nav, header, footer, .menu, .navigation, .sidebar, .breadcrumb, .print, .share, .advertisement');
+                  unwanted2.forEach(el => el.remove());
+                  results.strategy2 = body.textContent?.trim() || '';
+                  
+                  return results;
+                });
+                
+                console.log(\`     📝 Strategy 1 extracted \${strategies.strategy1.length} chars\`);
+                console.log(\`     📝 Strategy 2 extracted \${strategies.strategy2.length} chars\`);
+                
+                // Choose best content
+                let bestContent = strategies.strategy1.length > strategies.strategy2.length ? 
+                  strategies.strategy1 : strategies.strategy2;
+                
+                // Fallback if content too short
+                if (bestContent.length < 100) {
+                  bestContent = strategies.strategy1 + '\\n\\n' + strategies.strategy2;
+                }
+                
+                // Clean content
+                bestContent = bestContent
+                  .replace(/\\s+/g, ' ')
+                  .replace(/\\n\\s*\\n/g, '\\n')
+                  .trim();
+                
+                // Extract title
+                const title = await this.page.evaluate(() => {
+                  const h1 = document.querySelector('h1, .title, .law-title');
+                  return h1 ? h1.textContent.trim() : '';
+                });
+                
+                const result = {
+                  ...law,
+                  title: title || law.title || \`Law \${law.id}\`,
+                  fullText: bestContent,
+                  enhancedMetadata: {
+                    scrapingMethod: 'github-actions-enhanced',
+                    timestamp: new Date().toISOString(),
+                    processingTime: Date.now() - startTime,
+                    textLength: bestContent.length,
+                    batchId: ${{ matrix.batch }},
+                    strategies: {
+                      strategy1Length: strategies.strategy1.length,
+                      strategy2Length: strategies.strategy2.length
+                    }
+                  }
+                };
+                
+                console.log(\`   ✅ Enhanced scraping completed: \${bestContent.length} chars in \${Date.now() - startTime}ms\`);
+                return result;
+                
+              } catch (error) {
+                console.error(\`   ❌ Failed to scrape law \${law.id}:\`, error.message);
+                throw error;
+              }
+            }
+            
+            async close() {
+              if (this.browser) await this.browser.close();
+            }
+          }
+
+          async function processBatch() {
+            const batchNumber = ${{ matrix.batch }};
+            const batchFile = \`enhanced_batch_\${batchNumber}.json\`;
+            
+            console.log(\`📦 Processing batch \${batchNumber}\`);
+            
+            if (!fs.existsSync(batchFile)) {
+              console.log(\`⚠️  Batch file \${batchFile} not found, skipping...\`);
+              return;
+            }
+            
+            const batchLaws = JSON.parse(fs.readFileSync(batchFile, 'utf8'));
+            console.log(\`📊 Batch contains \${batchLaws.length} laws\`);
+            
+            // Ensure public directory exists
+            if (!fs.existsSync('./public')) {
+              fs.mkdirSync('./public', { recursive: true });
+            }
+            
+            const scraper = new GitHubActionsScraper();
+            await scraper.init();
+            
+            const results = {
+              batchId: batchNumber,
+              totalLaws: batchLaws.length,
+              successful: 0,
+              failed: 0,
+              processedAt: new Date().toISOString()
+            };
+            
+            for (let i = 0; i < batchLaws.length; i++) {
+              const law = batchLaws[i];
+              console.log(\`\\n[\${i + 1}/\${batchLaws.length}] Processing law \${law.id}...\`);
+              
+              const outputPath = \`./public/\${law.id}_enhanced.json\`;
+              
+              // Skip if already exists
+              if (fs.existsSync(outputPath)) {
+                console.log(\`   ⏭️  Already exists, skipping...\`);
+                results.successful++;
+                continue;
+              }
+              
+              let success = false;
+              for (let attempt = 1; attempt <= scraper.options.maxRetries; attempt++) {
+                try {
+                  const enhancedLaw = await scraper.scrapeLaw(law);
+                  
+                  // Validate content quality
+                  if (enhancedLaw.fullText.length > 100) {
+                    fs.writeFileSync(outputPath, JSON.stringify(enhancedLaw, null, 2));
+                    console.log(\`   ✅ Successfully scraped and saved law \${law.id}\`);
+                    results.successful++;
+                    success = true;
+                    break;
+                  } else {
+                    throw new Error('Content too short');
+                  }
+                } catch (error) {
+                  console.log(\`   ⚠️  Attempt \${attempt} failed: \${error.message}\`);
+                  if (attempt < scraper.options.maxRetries) {
+                    await new Promise(resolve => setTimeout(resolve, scraper.options.delay * attempt));
+                  }
+                }
+              }
+              
+              if (!success) {
+                results.failed++;
+                console.log(\`   ❌ Failed to process law \${law.id} after all attempts\`);
+              }
+              
+              // Small delay between laws
+              await new Promise(resolve => setTimeout(resolve, 1000));
+            }
+            
+            await scraper.close();
+            
+            console.log(\`\\n📊 BATCH \${batchNumber} RESULTS:\`);
+            console.log(\`   ✅ Successful: \${results.successful}/\${results.totalLaws}\`);
+            console.log(\`   ❌ Failed: \${results.failed}/\${results.totalLaws}\`);
+            console.log(\`   📈 Success rate: \${Math.round(results.successful/results.totalLaws*100)}%\`);
+            
+            // Save batch results
+            fs.writeFileSync(\`batch_\${batchNumber}_results.json\`, JSON.stringify(results, null, 2));
+            
+            return results;
+          }
+
+          processBatch().catch(error => {
+            console.error('Batch processing failed:', error);
+            process.exit(1);
+          });
+          "
+
+      - name: Commit enhanced laws
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+          # Add all enhanced files
+          git add public/*_enhanced.json || echo "No enhanced files to add"
+          git add batch_${{ matrix.batch }}_results.json || echo "No batch results to add"
+
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "No changes to commit for batch ${{ matrix.batch }}"
+          else
+            git commit -m "Enhanced scraping batch ${{ matrix.batch }} completed
+            
+            - Processed laws from enhanced_batch_${{ matrix.batch }}.json
+            - Added enhanced law files to public/ directory
+            - Batch processing results saved
+            - Auto-committed by GitHub Actions"
+            
+            git push
+            echo "✅ Successfully committed enhanced laws from batch ${{ matrix.batch }}"
+          fi
+
+  summary:
+    needs: enhanced-scraping-commit
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Generate comprehensive summary
+        run: |
+          echo "🎯 ENHANCED SCRAPING WITH COMMIT - FINAL SUMMARY" > final_summary.txt
+          echo "===============================================" >> final_summary.txt
+          echo "" >> final_summary.txt
+          echo "Workflow completed at: $(date)" >> final_summary.txt
+          echo "Batches processed: ${{ inputs.batch_start }} - ${{ inputs.batch_end }}" >> final_summary.txt
+          echo "" >> final_summary.txt
+
+          # Count enhanced files
+          enhanced_count=$(find public/ -name "*_enhanced.json" | wc -l 2>/dev/null || echo "0")
+          echo "Total enhanced laws: $enhanced_count" >> final_summary.txt
+
+          # Count batch results
+          batch_count=$(find . -name "batch_*_results.json" | wc -l 2>/dev/null || echo "0")
+          echo "Batch result files: $batch_count" >> final_summary.txt
+          echo "" >> final_summary.txt
+
+          echo "🎉 Enhanced scraping with auto-commit completed!" >> final_summary.txt
+          echo "All enhanced laws have been committed to the repository." >> final_summary.txt
+
+          cat final_summary.txt
+
+      - name: Commit final summary
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add final_summary.txt
+          git commit -m "Enhanced scraping workflow summary" || echo "No summary to commit"
+          git push || echo "No changes to push"
