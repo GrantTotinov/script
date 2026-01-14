@@ -1,0 +1,20 @@
+{
+  "0": "7",
+  "1": "7",
+  "2": "7",
+  "3": "9",
+  "4": "7",
+  "title": "Народно събрание на Република България",
+  "fullText": "Народно събрание на Република България Български | English Закони Дата на приемане Държавен вестник брой / г.",
+  "enhancedMetadata": {
+    "scrapingMethod": "github-actions-enhanced",
+    "timestamp": "2026-01-14T04:03:20.003Z",
+    "processingTime": 12839,
+    "textLength": 109,
+    "batchId": 19,
+    "strategies": {
+      "strategy1Length": 149,
+      "strategy2Length": 239
+    }
+  }
+}
