@@ -9,8 +9,8 @@ on:
         default: 'parallel'
         type: choice
         options:
-        - parallel
-        - sequential
+          - parallel
+          - sequential
       max_parallel:
         description: 'Maximum parallel jobs'
         required: true
@@ -130,7 +130,7 @@ jobs:
       fail-fast: false
       max-parallel: ${{ fromJson(inputs.max_parallel) }}
       matrix: ${{ fromJson(needs.create-batches.outputs.matrix) }}
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -151,13 +151,13 @@ jobs:
         run: |
           echo "🚀 Starting enhanced scraping batch ${{ matrix.batch.id }}"
           echo "📊 Laws: ${{ matrix.batch.count }} (${{ matrix.batch.start }} - ${{ matrix.batch.end }})"
-          
+
           # Create enhanced scraper for this batch
           node -e "
           const { chromium } = require('playwright');
           const fs = require('fs');
           const path = require('path');
-          
+
           class FastEnhancedScraper {
             constructor() {
               this.browser = null;
@@ -256,7 +256,7 @@ jobs:
               if (this.browser) await this.browser.close();
             }
           }
-          
+
           async function processBatch() {
             const scraper = new FastEnhancedScraper();
             const laws = ${{ toJson(matrix.batch.laws) }};
@@ -325,7 +325,7 @@ jobs:
             
             return results;
           }
-          
+
           processBatch().catch(error => {
             console.error('Batch processing failed:', error);
             process.exit(1);
@@ -365,11 +365,11 @@ jobs:
           echo "📊 ENHANCED SCRAPING FINAL SUMMARY" > summary.txt
           echo "=================================" >> summary.txt
           echo "" >> summary.txt
-          
+
           total_laws=0
           total_successful=0
           total_failed=0
-          
+
           for file in batch_*_results.json; do
             if [ -f "$file" ]; then
               batch_id=$(echo $file | grep -o '[0-9]\+')
@@ -384,21 +384,21 @@ jobs:
               total_failed=$((total_failed + failed))
             fi
           done
-          
+
           echo "" >> summary.txt
           echo "TOTAL RESULTS:" >> summary.txt
           echo "Laws processed: $total_laws" >> summary.txt
           echo "✅ Successful: $total_successful" >> summary.txt
           echo "❌ Failed: $total_failed" >> summary.txt
-          
+
           if [ $total_laws -gt 0 ]; then
             success_rate=$((total_successful * 100 / total_laws))
             echo "📈 Success rate: ${success_rate}%" >> summary.txt
           fi
-          
+
           echo "" >> summary.txt
           echo "🎉 Enhanced scraping completed!" >> summary.txt
-          
+
           cat summary.txt
 
       - name: Upload final summary

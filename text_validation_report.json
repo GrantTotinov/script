@@ -1,0 +1,74 @@
+{
+  "total": 4,
+  "valid": 1,
+  "invalid": 3,
+  "bySeverity": {
+    "critical": 1,
+    "high": 2,
+    "medium": 0,
+    "low": 0
+  },
+  "byIssueType": {
+    "truncated": 2,
+    "poor_structure": 2,
+    "no_full_text": 1
+  },
+  "detailedResults": [
+    {
+      "lawId": "10001",
+      "isValid": true,
+      "issues": [
+        "poor_structure"
+      ],
+      "severity": "low",
+      "recommendations": [
+        "Text has poor paragraph structure"
+      ],
+      "textLength": 382468,
+      "title": "Народно събрание на Република България"
+    },
+    {
+      "lawId": "10005",
+      "isValid": false,
+      "issues": [
+        "truncated",
+        "poor_structure"
+      ],
+      "severity": "high",
+      "recommendations": [
+        "Text appears to be truncated",
+        "Text has poor paragraph structure"
+      ],
+      "textLength": 3633287,
+      "title": "Народно събрание на Република България"
+    },
+    {
+      "lawId": "10009",
+      "isValid": false,
+      "issues": [
+        "truncated",
+        "poor_structure"
+      ],
+      "severity": "high",
+      "recommendations": [
+        "Text appears to be truncated",
+        "Text has poor paragraph structure"
+      ],
+      "textLength": 556861,
+      "title": "Народно събрание на Република България"
+    },
+    {
+      "lawId": "enhanced_scraping_summary",
+      "isValid": false,
+      "issues": [
+        "no_full_text"
+      ],
+      "severity": "critical",
+      "recommendations": [
+        "Complete re-scrape required"
+      ],
+      "textLength": 0,
+      "title": "Unknown"
+    }
+  ]
+}

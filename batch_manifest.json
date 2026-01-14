@@ -1,0 +1,158 @@
+{
+  "totalBatches": 25,
+  "batchSize": 50,
+  "totalLaws": 1224,
+  "batches": [
+    {
+      "file": "enhanced_batch_2.json",
+      "laws": 50,
+      "startLaw": "156918",
+      "endLaw": "157094"
+    },
+    {
+      "file": "enhanced_batch_3.json",
+      "laws": 50,
+      "startLaw": "157095",
+      "endLaw": "157303"
+    },
+    {
+      "file": "enhanced_batch_4.json",
+      "laws": 50,
+      "startLaw": "157305",
+      "endLaw": "157517"
+    },
+    {
+      "file": "enhanced_batch_5.json",
+      "laws": 50,
+      "startLaw": "157519",
+      "endLaw": "163403"
+    },
+    {
+      "file": "enhanced_batch_6.json",
+      "laws": 50,
+      "startLaw": "163405",
+      "endLaw": "163512"
+    },
+    {
+      "file": "enhanced_batch_7.json",
+      "laws": 50,
+      "startLaw": "163516",
+      "endLaw": "164042"
+    },
+    {
+      "file": "enhanced_batch_8.json",
+      "laws": 50,
+      "startLaw": "164043",
+      "endLaw": "164304"
+    },
+    {
+      "file": "enhanced_batch_9.json",
+      "laws": 50,
+      "startLaw": "164317",
+      "endLaw": "164632"
+    },
+    {
+      "file": "enhanced_batch_10.json",
+      "laws": 50,
+      "startLaw": "164645",
+      "endLaw": "164943"
+    },
+    {
+      "file": "enhanced_batch_11.json",
+      "laws": 50,
+      "startLaw": "164944",
+      "endLaw": "165174"
+    },
+    {
+      "file": "enhanced_batch_12.json",
+      "laws": 50,
+      "startLaw": "165175",
+      "endLaw": "165562"
+    },
+    {
+      "file": "enhanced_batch_13.json",
+      "laws": 50,
+      "startLaw": "165582",
+      "endLaw": "166107"
+    },
+    {
+      "file": "enhanced_batch_14.json",
+      "laws": 50,
+      "startLaw": "166108",
+      "endLaw": "166549"
+    },
+    {
+      "file": "enhanced_batch_15.json",
+      "laws": 50,
+      "startLaw": "166563",
+      "endLaw": "42031"
+    },
+    {
+      "file": "enhanced_batch_16.json",
+      "laws": 50,
+      "startLaw": "42033",
+      "endLaw": "42242"
+    },
+    {
+      "file": "enhanced_batch_17.json",
+      "laws": 50,
+      "startLaw": "42244",
+      "endLaw": "66505"
+    },
+    {
+      "file": "enhanced_batch_18.json",
+      "laws": 50,
+      "startLaw": "66508",
+      "endLaw": "77774"
+    },
+    {
+      "file": "enhanced_batch_19.json",
+      "laws": 50,
+      "startLaw": "77797",
+      "endLaw": "77905"
+    },
+    {
+      "file": "enhanced_batch_20.json",
+      "laws": 50,
+      "startLaw": "77906",
+      "endLaw": "78085"
+    },
+    {
+      "file": "enhanced_batch_21.json",
+      "laws": 50,
+      "startLaw": "78086",
+      "endLaw": "78241"
+    },
+    {
+      "file": "enhanced_batch_22.json",
+      "laws": 50,
+      "startLaw": "78250",
+      "endLaw": "9660"
+    },
+    {
+      "file": "enhanced_batch_23.json",
+      "laws": 50,
+      "startLaw": "9661",
+      "endLaw": "9807"
+    },
+    {
+      "file": "enhanced_batch_24.json",
+      "laws": 50,
+      "startLaw": "9808",
+      "endLaw": "9881"
+    },
+    {
+      "file": "enhanced_batch_25.json",
+      "laws": 50,
+      "startLaw": "9882",
+      "endLaw": "9958"
+    },
+    {
+      "file": "enhanced_batch_26.json",
+      "laws": 24,
+      "startLaw": "9961",
+      "endLaw": "9996"
+    }
+  ],
+  "created": "2026-01-14T02:13:56.443Z"
+}
